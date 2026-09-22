@@ -5,6 +5,7 @@ import com.example.lab9.model.DepositTransaction;
 import com.example.lab9.repository.AccountRepository;
 import com.example.lab9.repository.DepositRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -18,7 +19,7 @@ public class DepositService {
         this.depositRepository = depositRepository;
     }
 
-    //@Transactional
+    @Transactional
     public void deposit(Long accountId, Double amount) {
 
         Account account = accountRepository.findById(accountId)
@@ -32,6 +33,6 @@ public class DepositService {
         deposit.setAccount(account);
         depositRepository.save(deposit);
         
-        throw new RuntimeException("Test Rollback");
+        //throw new RuntimeException("Test Rollback");
     }
 }
