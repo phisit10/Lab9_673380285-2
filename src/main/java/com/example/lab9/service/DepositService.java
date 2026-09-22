@@ -33,6 +33,6 @@ public class DepositService {
         deposit.setAccount(account);
         depositRepository.save(deposit);
         
-        //throw new RuntimeException("Test Rollback");
+        throw new RuntimeException("Test Rollback");
     }
 }
